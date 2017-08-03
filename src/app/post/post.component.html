@@ -1,0 +1,22 @@
+<table *ngIf="results" border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>MBID</th>
+      <th>URL</th>
+      <th>Duration</th>
+      <th>Listeners</th>
+      <th>Playcount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of results">
+      <td>{{p.name}}</td>
+      <td>{{p.mbid}}</td>
+      <td>{{p.url}}</td>
+      <td>{{p.duration}}</td>
+      <td>{{p.listeners}}</td>
+      <td>{{p.playcount}}</td>
+    </tr>
+  </tbody>
+</table>
