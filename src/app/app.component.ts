@@ -10,4 +10,5 @@ import { PostComponent } from "./post/post.component";
   providers: [PostService]
 })
 export class AppComponent {
+
 }

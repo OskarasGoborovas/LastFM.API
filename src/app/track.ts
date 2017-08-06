@@ -7,7 +7,7 @@ export class Track {
     playcount : number;
 
     constructor(obj?: any){
-        this.name = obj && obj.name || null;
+        this.name = obj && obj|| null;
         this.mbid = obj && obj.mbid || null;
         this.url = obj && obj.url || null;
         this.duration = obj && obj.duration || null;
