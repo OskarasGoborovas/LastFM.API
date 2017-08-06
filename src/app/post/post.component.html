@@ -1,5 +1,7 @@
-    <ul class="heroes">
-      <li *ngFor="let p of results"(click)="onSelect(hero)">
+    <ul class="tracks">
+      <li *ngFor="let p of results"
+        (click)="onSelect(track)" [class.selected]="track === selectedTrack">
         <span class="badge">{{p.name}}</span> {{p.url}}
       </li>
     </ul>
+    <app-track-detail>[track]="selectedTrack" </app-track-detail>

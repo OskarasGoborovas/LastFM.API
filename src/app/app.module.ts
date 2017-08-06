@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { PostComponent } from './post/post.component';
 
 import { HttpModule } from '@angular/http';
+import { TrackDetailComponent } from './track-detail/track-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostComponent
+    PostComponent,
+    TrackDetailComponent
   ],
   imports: [
     BrowserModule,
