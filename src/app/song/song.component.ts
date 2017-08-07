@@ -12,8 +12,8 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class SongComponent implements OnInit {
 
-  public artist_name : string;
-  public song_name : string;
+  public artist_name : string = '';
+  public song_name : string = '';
 
   public song : Song;
 
@@ -30,7 +30,7 @@ export class SongComponent implements OnInit {
 
     load(artistName : string, songName : string){
       this.songService.getAll(artistName, songName).subscribe(
-      data => { this.song = data; },
+      data => { this.song = data.track; },
       error => console.log(error)
     );
   }
