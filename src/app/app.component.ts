@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { PostService } from "./post.service";
-import { ArtistService } from "./artist.service";
 
-import { PostComponent } from "./post/post.component";
+import { TracklistService } from "./tracklist/tracklist.service";
+import { ArtistService } from "./artist/artist.service";
+import { SongService} from "./song/song.service";
 
 
 
@@ -10,7 +10,7 @@ import { PostComponent } from "./post/post.component";
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [PostService, ArtistService]
+  providers: [TracklistService, ArtistService, SongService]
 })
 export class AppComponent {
 

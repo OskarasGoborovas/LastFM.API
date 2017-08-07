@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Artist} from '../artist';
-import { Track } from '../track';
+import {Artist} from '../artist/artist';
 
-import {ArtistService} from '../artist.service';
+import {ArtistService} from '../artist/artist.service';
 import {ActivatedRoute} from '@angular/router';
 
-import { PostComponent } from '../post/post.component';
 
 @Component({
   selector: 'app-artist',
@@ -14,25 +12,25 @@ import { PostComponent } from '../post/post.component';
 })
 export class ArtistComponent implements OnInit {
 
-  public id;
+  public id = '';
 
-  results: Artist;
+  public artist: Artist;
 
   constructor(private artistService: ArtistService,
-              private activatedRoute: ActivatedRoute,
-              private postComponent: PostComponent) { }
-  ngOnInit() {
+              private activatedRoute: ActivatedRoute) { }
 
-    /*
-    this.activatedRoute.params.subscribe(params => {
-      this.id = params['SALES_OPPORTUNITY_ID'];
-    });
-    */
-
-    this.artistService.getAll().subscribe(
-      data => { this.results = data.artist; },
+    load(mbid : string){
+      this.artistService.getAll(mbid).subscribe(
+      data => { this.artist = data.artist; },
       error => console.log(error)
     );
   }
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(params => {
+      this.id = params['mbid'];
+      this.load(this.id);
+    });
+  }
+
 
 }

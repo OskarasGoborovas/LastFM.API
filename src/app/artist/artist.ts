@@ -1,7 +1,7 @@
 export class Artist {
-  name: string;
-  mbid: string;
-  url: string;
+  name: string = '';
+  mbid: string = '';
+  url: string = '';
 
   constructor(obj?: any) {
     this.name = obj && obj.name || null;

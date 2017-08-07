@@ -4,17 +4,19 @@ import { routes} from './app.routes';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { PostComponent } from './post/post.component';
+import { TracklistComponent } from './tracklist/tracklist.component';
 
 import { HttpModule } from '@angular/http';
 import { ArtistComponent } from './artist/artist.component';
 import {FormsModule} from '@angular/forms';
+import { SongComponent } from './song/song.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostComponent,
-    ArtistComponent
+    TracklistComponent,
+    ArtistComponent,
+    SongComponent
   ],
   imports: [
     BrowserModule,
