@@ -1,8 +1,5 @@
-<app-track-detail [track]="selectedTrack"></app-track-detail>    
 <ul class="tracks">
-      <li *ngFor="let p of results"
-        [class.selected]="p === selectedTrack"
-        (click)="onSelect(p)">
-        <span class="badge">{{p.name}}</span>{{p.artist}} 
+      <li *ngFor="let p of results">
+        <a routerLink="/artist"><span class="badge">{{p.name}}</span>{{p.artist.name}}</a> 
       </li>
     </ul>
