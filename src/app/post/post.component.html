@@ -1,5 +1,5 @@
 <ul class="tracks">
       <li *ngFor="let p of results">
-        <a routerLink="/artist"><span class="badge">{{p.name}}</span>{{p.artist.name}}</a> 
+        <div routerLink="artist/"><span class="badge">{{p.artist.name}}</span>{{p.name}}</div> 
       </li>
     </ul>

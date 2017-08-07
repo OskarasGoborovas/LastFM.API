@@ -5,5 +5,5 @@ import { ArtistComponent} from './artist/artist.component';
 
 export const routes: Routes = [
   { path: '', component: PostComponent },
-  { path: 'artist/', component: ArtistComponent }
+  { path: 'artist', component: ArtistComponent }
 ];

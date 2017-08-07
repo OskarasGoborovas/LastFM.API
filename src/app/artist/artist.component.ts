@@ -13,7 +13,7 @@ export class ArtistComponent implements OnInit {
 
   public id;
 
-  results: Array<Artist>;
+  results: Artist;
 
   constructor(private artistService: ArtistService,
               private activatedRoute: ActivatedRoute) { }
