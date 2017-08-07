@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Artist} from '../artist';
+import { Track } from '../track';
 
 import {ArtistService} from '../artist.service';
 import {ActivatedRoute} from '@angular/router';
+
+import { PostComponent } from '../post/post.component';
 
 @Component({
   selector: 'app-artist',
@@ -16,7 +19,8 @@ export class ArtistComponent implements OnInit {
   results: Artist;
 
   constructor(private artistService: ArtistService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private postComponent: PostComponent) { }
   ngOnInit() {
 
     /*
