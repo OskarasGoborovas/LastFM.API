@@ -12,7 +12,7 @@ export class SongChildComponent implements OnInit {
 
 
   @Input() songsTest: Songs = new Songs();
-  @Input() masterName: string; // @Input('xxxxxx')    -   'xxxxxx' in song-parent.component.html
+  @Input() masterName: string;
 
   public song_info: Song = new Song();
 
