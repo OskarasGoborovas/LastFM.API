@@ -10,13 +10,17 @@ import { HttpModule } from '@angular/http';
 import { ArtistComponent } from './artist/artist.component';
 import {FormsModule} from '@angular/forms';
 import { SongComponent } from './song/song.component';
+import { SongChildComponent } from './song-child/song-child.component';
+import { SongParentComponent } from './song-parent/song-parent.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TracklistComponent,
     ArtistComponent,
-    SongComponent
+    SongComponent,
+    SongChildComponent,
+    SongParentComponent
   ],
   imports: [
     BrowserModule,
