@@ -6,15 +6,7 @@ export class Song {
     mbid : string= '';
     url : string= '';
     
-    artist : Artist = null;
-    album : Album = null;
+    artist : Artist = new Artist();
+    album : Album = new Album();
 
-    constructor(obj?: any){
-        this.name = obj && obj|| null;
-        this.mbid = obj && obj.mbid || null;
-        this.url = obj && obj.url || null;
-
-        this.artist = new Artist();
-        this.album = new Album();
-    }
 }
