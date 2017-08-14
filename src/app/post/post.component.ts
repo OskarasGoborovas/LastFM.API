@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from './post';
 import { PostService } from './post.service';
 import { SearchService } from '../search/search.service';
+import { Article } from '../article';
 
 @Component({
   selector: 'app-post',
@@ -10,7 +11,9 @@ import { SearchService } from '../search/search.service';
 })
 export class PostComponent implements OnInit {
   topChartResults = new Array<Post>();
-  searchResults = new Array<Post>();
+  searchSongResults = new Array<Post>();
+
+  searchArticleResults = new Array<Article>();
 
   displayTop: boolean = true;
   searchSong: string = '';
@@ -25,15 +28,25 @@ export class PostComponent implements OnInit {
     );
   }
 
-  onClicked(toSearch: string) {
-    this.searchService.searchTrack(toSearch).subscribe(
-      data => { this.searchResults = data.results.trackmatches.track; },
+  onClicked(search: string, typeOfSearch: string) {
+
+    if(typeOfSearch == "music"){
+    this.searchService.searchTrack(search).subscribe(
+      data => { this.searchSongResults = data.results.trackmatches.track; },
       error => console.log(error)
     )
 
     //disables top chart results if searched for song
     this.displayTop = false;
-    console.log('post component search event triggered with string: ' + toSearch + '. also searchSong is: ' + this.searchSong);
+    }
+    else if(typeOfSearch == "article"){
+      this.searchService.searchArticles(search).subscribe(
+        data => { this.searchArticleResults = data.response.docs; },
+      error => console.log(error)
+      )
+    //disables top chart results if searched for song
+    this.displayTop = false;
+    }
   }
 
 

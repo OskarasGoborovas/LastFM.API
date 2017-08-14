@@ -1,9 +1,14 @@
-<h2>Song to search for: "{{searchSong}}"! </h2>
+<h2>Searching for {{selectedType}} with "{{searchString}}" keywords </h2>
 <br>
 
-<input type='text' [(ngModel)]="searchSong" placeholder="Song name" name="searchSong">
+<input type='text' [(ngModel)]="searchString" placeholder="Search" name="searchString">
 
-<button [disabled]="!searchSong" (click)="onClicked(searchSong)"> Search </button>
+  <select [(ngModel)]="selectedType" name="selectedType">
+  <option value="music">Music</option>
+  <option value="article">Articles</option>
+  </select>
+
+<button [disabled]="!searchString" (click)="onClicked(searchString, selectedType)"> Search </button>
 
  <ng-container *ngIf="topChartResults"> 
   <br>
@@ -25,11 +30,11 @@
   </ng-container>
 
   <!-- displays search results, if searched -->
-  <ng-container *ngIf="searchResults"> 
+  <ng-container *ngIf="searchSongResults"> 
     <ng-container *ngIf="displayTop==false">
-      <h2> List contains: {{searchResults.length}} songs and artists</h2>
+      <h2> List contains: {{searchSongResults.length}} songs and artists</h2>
       <ol>
-        <li *ngFor="let p of searchResults">
+        <li *ngFor="let p of searchSongResults">
           
           <app-song-child 
             [songToFind]="p.name"
@@ -37,6 +42,32 @@
           </app-song-child>
         </li>
       </ol>
+
+    </ng-container>
+  </ng-container>
+
+    <ng-container *ngIf="searchArticleResults"> 
+    <ng-container *ngIf="displayTop==false">
+      <h2> List contains of {{searchArticleResults.length}} articles</h2>
+      <table *ngIf="searchArticleResults" border="1">
+      <thead>
+      <tr>
+        <th>Snippet</th>
+        <th>Type</th>
+        <th>Publish date</th>
+        <th>URL</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let p of searchArticleResults">
+        <td>{{p.snippet}}</td>
+        <td>{{p.type_of_material}}</td>
+        <td>{{p.pub_date}}</td>
+        <td><a href="{{p.web_url}}">{{p.web_url}}</a></td>
+  </tr>
+  </tbody>
+</table>
+
 
     </ng-container>
   </ng-container>

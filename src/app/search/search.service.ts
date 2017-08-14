@@ -17,5 +17,12 @@ export class SearchService {
       .map((res: Response) => res.json());
   }
 
+  searchArticles(article_keywords : string){
+    var str = article_keywords;
+    var replaced_article_keywords = str.split(' ').join('+');
 
+    console.log ('LINK TRYING TO BE OPENED from song service' +  'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=4e78041df036484db89f1d24d3e49fdb&q='+replaced_article_keywords);
+    return this.http.get('https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=4e78041df036484db89f1d24d3e49fdb&q='+replaced_article_keywords)
+      .map((res: Response) => res.json());
+  }
 }

@@ -12,7 +12,6 @@ import { PostComponent } from './post/post.component';
 import { ArtistComponent } from './artist/artist.component';
 import { SongComponent } from './song/song.component';
 import { SongChildComponent } from './song-child/song-child.component';
-import { MoviesComponent } from './movies/movies.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +19,7 @@ import { MoviesComponent } from './movies/movies.component';
     PostComponent,
     ArtistComponent,
     SongComponent,
-    SongChildComponent,
-    MoviesComponent
+    SongChildComponent
   ],
   imports: [
     BrowserModule,
