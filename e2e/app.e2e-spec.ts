@@ -1,10 +1,10 @@
-import { LastfmPage } from './app.po';
+import { LastFm2Page } from './app.po';
 
-describe('lastfm App', () => {
-  let page: LastfmPage;
+describe('last-fm2 App', () => {
+  let page: LastFm2Page;
 
   beforeEach(() => {
-    page = new LastfmPage();
+    page = new LastFm2Page();
   });
 
   it('should display welcome message', () => {

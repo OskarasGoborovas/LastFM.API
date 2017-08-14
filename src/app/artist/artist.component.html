@@ -1,4 +1,4 @@
-<table *ngIf="artist" border="1">
+<table *ngIf="artist_info" border="1">
   <thead>
   <tr>
     <th>Name</th>
@@ -8,9 +8,31 @@
   </thead>
   <tbody>
   <tr>
-    <td>{{artist.name}}</td>
-    <td>{{artist.mbid}}</td>
-    <td>{{artist.url}}</td>
+    <td>{{artist_info.name}}</td>
+    <td>{{artist_info.mbid}}</td>
+    <td>{{artist_info.url}}</td>
   </tr>
   </tbody>
 </table>
+
+
+<!-- if top song results exist, display this -->
+<ng-container *ngIf="topSongs">
+
+  <!-- if button was pressed from child component, display this -->
+  <ng-container *ngIf="showText">
+    BUTTON WAS PRESSED FROM CHILD COMPONENT
+  </ng-container>
+    
+  <h2> List contains: {{topSongs.length}} songs and artists</h2>
+    <ol>   
+      <li *ngFor="let p of topSongs; let i = index">
+        <app-song-child 
+          [songToFind]="p.name"
+          [artistToFind]="p.artist.name"
+          (onClicked)="onClicked($event)"> <!-- button press event -->
+        </app-song-child>
+      </li>
+  </ol>
+  
+</ng-container> 

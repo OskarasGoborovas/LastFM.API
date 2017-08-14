@@ -5,18 +5,16 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class SongService {
   constructor(private http: Http) { }
-  getAll(artist_name : string, song_name : string) {
+  getAll(artist_name: string, song_name: string) {
 
-    console.log('http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=05db3c83877e76ef1ceda90c8144052f&artist='+this.trimArtistName(artist_name)+'&track='+this.trimSongName(song_name)+'&format=json')
-    return this.http.get('http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=05db3c83877e76ef1ceda90c8144052f&artist='+this.trimArtistName(artist_name)+'&track='+this.trimSongName(song_name)+'&format=json')
+    //replaces spaces in artist/song names with "+"
+    var str1 = artist_name;
+    var str2 = song_name;
+    var replaced_artist_name = str1.split(' ').join('+');
+    var replaced_song_name = str2.split(' ').join('+');
+
+    console.log ('LINK TRYING TO BE OPENED from song service' +  'http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=baa6c1bc56fb80f22b9dec1e9b0b2352&artist=' + replaced_artist_name + '&track=' + replaced_song_name + '&format=json');
+    return this.http.get('http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=baa6c1bc56fb80f22b9dec1e9b0b2352&artist=' + replaced_artist_name + '&track=' + replaced_song_name + '&format=json')
       .map((res: Response) => res.json());
   }
-    trimArtistName(artistName : string) : string{
-      var artistNameT = artistName.split(' ').join('+');
-      return artistNameT;
-    }
-     trimSongName(songName : string) : string{
-      var songNameT = songName.split(' ').join('+');
-      return songNameT;
-    }
 }

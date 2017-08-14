@@ -1,0 +1,44 @@
+<h2>Song to search for: "{{searchSong}}"! </h2>
+<br>
+
+<input type='text' [(ngModel)]="searchSong" placeholder="Song name" name="searchSong">
+
+<button [disabled]="!searchSong" (click)="onClicked(searchSong)"> Search </button>
+
+ <ng-container *ngIf="topChartResults"> 
+  <br>
+  (this is post component)
+
+  <!-- displays top chart results -->
+  <ng-container *ngIf="displayTop">
+    <h2> List contains: {{topChartResults.length}} songs and artists</h2>
+    <ol>
+      <li *ngFor="let p of topChartResults">
+        
+        <app-song-child 
+          [songToFind]="p.name"
+          [artistToFind]="p.artist.name">
+        </app-song-child>
+      </li>
+    </ol>
+
+  </ng-container>
+
+  <!-- displays search results, if searched -->
+  <ng-container *ngIf="searchResults"> 
+    <ng-container *ngIf="displayTop==false">
+      <h2> List contains: {{searchResults.length}} songs and artists</h2>
+      <ol>
+        <li *ngFor="let p of searchResults">
+          
+          <app-song-child 
+            [songToFind]="p.name"
+            [artistToFind]="p.artist">
+          </app-song-child>
+        </li>
+      </ol>
+
+    </ng-container>
+  </ng-container>
+
+</ng-container> 

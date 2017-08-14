@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Song } from '../song/song';
-
-import {SongService} from '../song/song.service';
+import {Song} from './song';
+import {SongService} from './song.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -12,27 +10,27 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class SongComponent implements OnInit {
 
-  public artist_name : string = '';
-  public song_name : string = '';
+  public artist_name: string = '';
+  public song_name: string = '';
 
-  public song : Song;
+  //result from song service
+  public song_info: Song;
 
   constructor(private songService: SongService,
               private activatedRoute: ActivatedRoute) { }
   ngOnInit() {
 
+    
     this.activatedRoute.params.subscribe(params => {
       this.artist_name = params['artist_name'];
       this.song_name = params['song_name'];
-      this.load(this.artist_name, this.song_name);
-    });
-  }
 
-    load(artistName : string, songName : string){
-      this.songService.getAll(artistName, songName).subscribe(
-      data => { this.song = data.track; },
-      error => console.log(error)
-    );
+        this.songService.getAll(this.artist_name, this.song_name).subscribe(
+        data => { this.song_info = data.track; },
+        error => console.log(error)
+      );
+    });
+    
   }
 
 }

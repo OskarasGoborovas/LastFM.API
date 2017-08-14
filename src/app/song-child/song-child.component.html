@@ -1,5 +1,11 @@
+<ng-container *ngIf="song_info">
+    <button (click)="clicked(true)"  >Show</button>
+    <button (click)="clicked(false)" >Hide</button>
+    Song name: <strong><a routerLink="/song/{{song_info.artist.name}}/{{song_info.name}}">{{song_info.name}} </a></strong>
+    , artist: <strong><a routerLink="/artist/{{song_info.artist.mbid}}">{{song_info.artist.name}} </a> </strong>
+    <ng-container *ngIf="song_info.album">
+        ,  from album: <strong>{{song_info.album.title}}</strong> 
+    </ng-container>
+</ng-container>
 
-
- <p>Song name: <strong>{{song_info.name}}</strong>, 
-    artist: <strong>{{song_info.artist.name}}</strong>, 
-    from album: <strong>{{song_info.album.title}}</strong></p> 
+    

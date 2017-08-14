@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { TracklistService } from './tracklist.service';
+import { PostService } from './post.service';
 
 describe('PostService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [TracklistService]
+      providers: [PostService]
     });
   });
 
-  it('should be created', inject([TracklistService], (service: TracklistService) => {
+  it('should be created', inject([PostService], (service: PostService) => {
     expect(service).toBeTruthy();
   }));
 });

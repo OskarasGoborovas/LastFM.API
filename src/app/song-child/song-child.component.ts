@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Songs } from '../songs';
-import {Song} from '../song/song';
-import {SongService} from '../song/song.service';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Song } from '../song/song';
+import { SongService } from '../song/song.service';
+import { Post } from '../post/post';
 
 @Component({
   selector: 'app-song-child',
@@ -10,20 +10,29 @@ import {SongService} from '../song/song.service';
 })
 export class SongChildComponent implements OnInit {
 
+  @Input() songToFind: string = '';
+  @Input() artistToFind: string = '';
 
-  @Input() songsTest: Songs = new Songs();
-  @Input() masterName: string;
+  //button output
+  @Output() onClicked = new EventEmitter<boolean>();
 
-  public song_info: Song = new Song();
+  //song result from song service
+  public song_info = new Song();
 
   constructor(private songService: SongService) { }
 
   ngOnInit() {
-    this.songService.getAll(this.songsTest.name, this.songsTest.songName ).subscribe(
+    this.songService.getAll(this.artistToFind, this.songToFind ).subscribe(
         data => { this.song_info = data.track; },
         error => console.log(error)
     );
-
   }
+
+  //button press to display text in parent component
+  clicked(toDisplay: boolean){
+    this.onClicked.emit(toDisplay);
+    console.log("BUTTON WAS CLICKED inside song-child component" + toDisplay);
+  }
+
 
 }

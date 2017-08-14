@@ -4,23 +4,22 @@ import { routes} from './app.routes';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { TracklistComponent } from './tracklist/tracklist.component';
 
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+
+import { PostComponent } from './post/post.component';
 import { ArtistComponent } from './artist/artist.component';
-import {FormsModule} from '@angular/forms';
 import { SongComponent } from './song/song.component';
 import { SongChildComponent } from './song-child/song-child.component';
-import { SongParentComponent } from './song-parent/song-parent.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TracklistComponent,
+    PostComponent,
     ArtistComponent,
     SongComponent,
-    SongChildComponent,
-    SongParentComponent
+    SongChildComponent
   ],
   imports: [
     BrowserModule,
