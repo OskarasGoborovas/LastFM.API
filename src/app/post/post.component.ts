@@ -31,6 +31,7 @@ export class PostComponent implements OnInit {
   onClicked(search: string, typeOfSearch: string) {
 
     if(typeOfSearch == "music"){
+    this.searchArticleResults = null;
     this.searchService.searchTrack(search).subscribe(
       data => { this.searchSongResults = data.results.trackmatches.track; },
       error => console.log(error)
@@ -40,6 +41,7 @@ export class PostComponent implements OnInit {
     this.displayTop = false;
     }
     else if(typeOfSearch == "article"){
+      this.searchSongResults = null;
       this.searchService.searchArticles(search).subscribe(
         data => { this.searchArticleResults = data.response.docs; },
       error => console.log(error)
